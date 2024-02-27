@@ -1,8 +1,17 @@
 package ProjectVnb;
+
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
+		System.out.println("Bem-vindo ao Banco Vai Nu Bank!");
+
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
 		Scanner scanner = new Scanner(System.in);
 		Bank bank = new Bank();
 
@@ -31,6 +40,7 @@ public class Main {
 				double limitCredit = scanner.nextDouble();
 				CurrentAccount currentAccount = new CurrentAccount(officeCC, titleHolderCC, cpfCC, limitCredit);
 				bank.addAccount(currentAccount);
+				displayInformation(currentAccount);
 				break;
 
 			case 2:
@@ -44,6 +54,7 @@ public class Main {
 				int birthday = scanner.nextInt();
 				SavingsAccount savingsAccount = new SavingsAccount(officeCP, titleHolderCP, cpfCP, birthday);
 				bank.addAccount(savingsAccount);
+				displayInformation(savingsAccount);
 				break;
 
 			case 3:
@@ -118,6 +129,17 @@ public class Main {
 			default:
 				System.out.println("Opção inválida. Tente novamente.");
 			}
+		}
+	}
+
+	private static void displayInformation(Account account) {
+		System.out.println("\n INFORMAÇÕES DO USUARIO \n ");
+		System.out.println("\nAs informações do seu registro ficarão na tela por 15 segundos:");
+		System.out.println(account);
+		try {
+			Thread.sleep(15000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 }

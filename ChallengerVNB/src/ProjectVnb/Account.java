@@ -12,7 +12,7 @@ public abstract class Account {
 
 	public Account(String office, String titleHolder, String cpf) {
 		this.accountNumber = generateAccountNumber();
-		this.office = generateAgencyNumber();
+		this.office = office;
 		this.titleHolder = titleHolder;
 		if (cpfValid(cpf)) {
 			this.cpf = cpf;
@@ -24,12 +24,6 @@ public abstract class Account {
 
 	private boolean cpfValid(String cpf) {
 		return cpf != null && cpf.matches("\\d{11}");
-	}
-
-	private String generateAgencyNumber() {
-		Random random = new Random();
-		int numberAgency = random.nextInt(9000) + 1000;
-		return String.valueOf(numberAgency);
 	}
 
 	private String generateAccountNumber() {
@@ -82,12 +76,12 @@ public abstract class Account {
 			System.out.println("Saldo insuficiente!");
 		}
 	}
-	
-	 public void displayInformation() {
-	        System.out.println("Nome do Titular: " + titleHolder);
-	        System.out.println("CPF: " + cpf);
-	        System.out.println("Agência: " + office);
-	        System.out.println("Número da Conta: " + accountNumber);
-	        System.out.println("Saldo: " + balance);
-	    }
+
+	public void displayInformation() {
+		System.out.println("Nome do Titular: " + titleHolder);
+		System.out.println("\n CPF: " + cpf);
+		System.out.println("\n Agência: " + office);
+		System.out.println("\n Número da Conta: " + accountNumber);
+		System.out.println("\nSaldo: " + balance);
+	}
 }
