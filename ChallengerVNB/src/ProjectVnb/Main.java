@@ -63,8 +63,9 @@ public class Main {
 				Account account = bank.searchAccount(numberAccount);
 
 				if (account != null) {
-					System.out.println("Operações para a conta: " + account);
-					System.out.println("1. Sacar");
+					System.out.println("\nBem vindo " + account.getTitleHolder());
+					System.out.println("\nEscolha qual tipo de operação: ");
+					System.out.println("\n1. Sacar");
 					System.out.println("2. Depositar");
 					System.out.println("3. Transferir");
 					int operation = scanner.nextInt();
@@ -122,7 +123,7 @@ public class Main {
 				break;
 
 			case 6:
-				System.out.println("Saindo do programa. Até mais!");
+				System.out.println("Até Breve!");
 				System.exit(0);
 				break;
 
@@ -133,13 +134,20 @@ public class Main {
 	}
 
 	private static void displayInformation(Account account) {
-		System.out.println("\n INFORMAÇÕES DO USUARIO \n ");
 		System.out.println("\nAs informações do seu registro ficarão na tela por 15 segundos:");
-		System.out.println(account);
+		System.out.println("=============================================");
+		System.out.println(" Nome do Titular: " + account.getTitleHolder());
+		System.out.println(" CPF: " + account.getCpf());
+		System.out.println(" Agência: " + account.getOffice());
+		System.out.println(" Número da Conta: " + account.getAccountNumber());
+		System.out.println(" Saldo: " + account.getBalance());
+		System.out.println("=============================================");
+
 		try {
 			Thread.sleep(15000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 	}
 }

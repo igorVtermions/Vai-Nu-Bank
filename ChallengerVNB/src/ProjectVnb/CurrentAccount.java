@@ -1,7 +1,6 @@
 package ProjectVnb;
 
 public class CurrentAccount extends Account implements BankingOperations {
-	private double balance;
 	private double limitCredit;
 
 	public CurrentAccount(String office, String titleHolder, String cpf, double limitCredit) {

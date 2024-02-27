@@ -1,7 +1,6 @@
 package ProjectVnb;
 
 public class SavingsAccount extends Account implements BankingOperations {
-	private double balance;
 	private int birthday;
 
 	public SavingsAccount(String office, String titleHolder, String cpf, int birthday) {

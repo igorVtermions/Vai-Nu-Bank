@@ -4,84 +4,80 @@ import java.util.Random;
 
 public abstract class Account {
 
-	protected String accountNumber;
-	protected String office;
-	protected String titleHolder;
-	protected String cpf;
-	protected double balance;
+    protected String accountNumber;
+    protected String office;
+    protected String titleHolder;
+    protected String cpf;
+    protected double balance;
 
-	public Account(String office, String titleHolder, String cpf) {
-		this.accountNumber = generateAccountNumber();
-		this.office = office;
-		this.titleHolder = titleHolder;
-		if (cpfValid(cpf)) {
-			this.cpf = cpf;
-		} else {
-			throw new IllegalArgumentException("CPF deve ter exatamente 11 dígitos.");
-		}
-		this.balance = 0;
-	}
+    public Account(String office, String titleHolder, String cpf) {
+        this.accountNumber = generateAccountNumber();
+        this.office = office;
+        this.titleHolder = titleHolder;
+        if (cpfValid(cpf)) {
+            this.cpf = cpf;
+        } else {
+            throw new IllegalArgumentException("CPF deve ter exatamente 11 dígitos.");
+        }
+        this.balance = generateRandomBalance();
+    }
 
-	private boolean cpfValid(String cpf) {
-		return cpf != null && cpf.matches("\\d{11}");
-	}
+    private boolean cpfValid(String cpf) {
+        return cpf != null && cpf.matches("\\d{11}");
+    }
 
-	private String generateAccountNumber() {
-		Random random = new Random();
-		int numberAccount = random.nextInt(900000) + 100000;
-		return String.valueOf(numberAccount);
-	}
+    private String generateAccountNumber() {
+        Random random = new Random();
+        int numberAccount = random.nextInt(900000) + 100000;
+        return String.valueOf(numberAccount);
+    }
 
-	public String getAccountNumber() {
-		return accountNumber;
-	}
+    private double generateRandomBalance() {
+        Random random = new Random();
+        return 1000 + random.nextInt(900000);
+    }
 
-	public String getOffice() {
-		return office;
-	}
+    public String getAccountNumber() {
+        return accountNumber;
+    }
 
-	public String getTitleHolder() {
-		return titleHolder;
-	}
+    public String getOffice() {
+        return office;
+    }
 
-	public String getCpf() {
-		return cpf;
-	}
+    public String getTitleHolder() {
+        return titleHolder;
+    }
 
-	public String toString() {
-		return "Conta{" + "numeroConta=" + accountNumber + ", agencia='" + office + '\'' + ", nomeTitular='"
-				+ titleHolder + '\'' + ", cpf='" + cpf + '\'' + '}';
-	}
+    public String getCpf() {
+        return cpf;
+    }
 
-	public void deposit(double value) {
-		balance += value;
-		System.out.println("Depósito realizado com sucesso. Saldo atual: " + balance);
-	}
+    public double getBalance() {
+        return balance;
+    }
 
-	public void withdraw(double value) {
-		if (value <= balance) {
-			balance -= value;
-			System.out.println("Saque realizado com sucesso. Saldo atual: " + balance);
-		} else {
-			System.out.println("Saldo insuficiente!");
-		}
-	}
+    public void deposit(double value) {
+        balance += value;
+        System.out.println("Depósito realizado com sucesso. Saldo atual: " + balance);
+    }
 
-	public void transfer(Account destination, double value) {
-		if (value <= balance) {
-			balance -= value;
-			destination.deposit(value);
-			System.out.println("Transferência realizada com sucesso. Saldo atual: " + balance);
-		} else {
-			System.out.println("Saldo insuficiente!");
-		}
-	}
+    public void withdraw(double value) {
+        if (value <= balance) {
+            balance -= value;
+            System.out.println("Saque realizado com sucesso. Saldo atual: " + balance);
+        } else {
+            System.out.println("Saldo insuficiente!");
+        }
+    }
 
-	public void displayInformation() {
-		System.out.println("Nome do Titular: " + titleHolder);
-		System.out.println("\n CPF: " + cpf);
-		System.out.println("\n Agência: " + office);
-		System.out.println("\n Número da Conta: " + accountNumber);
-		System.out.println("\nSaldo: " + balance);
-	}
+    public void transfer(Account destination, double value) {
+        if (value <= balance) {
+            balance -= value;
+            destination.deposit(value);
+            System.out.println("Transferência realizada com sucesso. Saldo atual: " + balance);
+        } else {
+            System.out.println("Saldo insuficiente!");
+        }
+    }
 }
