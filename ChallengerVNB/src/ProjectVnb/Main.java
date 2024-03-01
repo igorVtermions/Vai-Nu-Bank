@@ -111,17 +111,17 @@ public class Main {
 				break;
 
 			case 5:
-			    System.out.print("Digite o número da conta: ");
-			    int numberAccountSearch = scanner.nextInt();
-			    Account searchAccount = bank.searchAccount(numberAccountSearch);
+				System.out.print("Digite o número da conta: ");
+				int numberAccountSearch = scanner.nextInt();
+				Account searchAccount = bank.searchAccount(numberAccountSearch);
 
-			    if (searchAccount != null) {
-			        System.out.println("Conta encontrada: ");
-			        displayInformation(searchAccount);
-			    } else {
-			        System.out.println("Conta não encontrada.");
-			    }
-			    break;
+				if (searchAccount != null) {
+					System.out.println("Conta encontrada: ");
+					displayInformation(searchAccount);
+				} else {
+					System.out.println("Conta não encontrada.");
+				}
+				break;
 
 			case 6:
 				System.out.println("Até Breve!");
@@ -135,20 +135,20 @@ public class Main {
 	}
 
 	public static void displayInformation(Account account) {
-		System.out.println("\nAs informações do seu registro ficarão na tela por 10 segundos:");
-		System.out.println("=============================================");
-		System.out.println(" Nome do Titular: " + account.getTitleHolder());
-		System.out.println(" CPF: " + account.getCpf());
-		System.out.println(" Agência: " + account.getOffice());
-		System.out.println(" Número da Conta: " + account.getAccountNumber());
-		System.out.println(" Saldo: " + account.getBalance());
-		System.out.println("=============================================");
+	    System.out.println("\nAs informações do seu registro ficarão na tela por 10 segundos:");
+	    System.out.println("=============================================");
+	    System.out.println(" Tipo de Conta: " + account.getAccountType());
+	    System.out.println(" Nome do Titular: " + account.getTitleHolder());
+	    System.out.println(" CPF: " + account.getCpf());
+	    System.out.println(" Agência: " + account.getOffice());
+	    System.out.println(" Número da Conta: " + account.getAccountNumber());
+	    System.out.println(" Saldo: " + account.getBalance());
+	    System.out.println("=============================================");
 
-		try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
+	    try {
+	        Thread.sleep(10000);
+	    } catch (InterruptedException e) {
+	        e.printStackTrace();
+	    }
 	}
 }

@@ -47,4 +47,7 @@ public class CurrentAccount extends Account implements BankingOperations {
 	public void setLimitCredit(double limitCredit) {
 		this.limitCredit = limitCredit;
 	}
+	public String getAccountType() {
+        return "Conta Corrente";
+    }
 }

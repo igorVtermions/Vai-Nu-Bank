@@ -47,4 +47,7 @@ public class SavingsAccount extends Account implements BankingOperations {
 	public void setBirthday(int birthday) {
 		this.birthday = birthday;
 	}
+	public String getAccountType() {
+        return "Conta Poupança";
+    }
 }
