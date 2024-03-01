@@ -17,7 +17,7 @@ public abstract class Account {
         if (cpfValid(cpf)) {
             this.cpf = cpf;
         } else {
-            throw new IllegalArgumentException("CPF deve ter exatamente 11 dígitos.");
+            throw new IllegalArgumentException("CPF INVALIDO! ");
         }
         this.balance = generateRandomBalance();
     }
@@ -34,7 +34,7 @@ public abstract class Account {
 
     private double generateRandomBalance() {
         Random random = new Random();
-        return 1000 + random.nextInt(900000);
+        return 1000 + random.nextInt(90000);
     }
 
     public String getAccountNumber() {

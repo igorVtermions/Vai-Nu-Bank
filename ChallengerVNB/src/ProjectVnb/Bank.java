@@ -29,8 +29,8 @@ public class Bank {
     }
 
     public void viewAccounts() {
-        for (Account account : Accounts) {
-            System.out.println(account);
-        }
+    	 for (Account account : Accounts) {
+    	        Main.displayInformation(account);
+    	    }
     }
 }
